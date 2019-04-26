@@ -1,0 +1,76 @@
+# ironicbadger.packages
+full_update_apt_packages: True
+debian_package_list:
+  - ansible
+  - bash-completion
+  - curl
+  - git
+  - htop
+  - ntp
+  - openssh-server
+  - screen
+  - tmux
+  - tree
+  - wget
+
+# geerlingguy.security
+security_ssh_port: 22
+security_ssh_password_authentication: "no"
+security_ssh_permit_root_login: "no"
+security_ssh_usedns: "no"
+security_autoupdate_enabled: true
+security_fail2ban_enabled: true
+security_sudoers_passwordless:
+  - alex
+
+## rossmcdonald.telegraf
+telegraf_influxdb_urls:
+  - http://example.host.org:8086
+telegraf_influxdb_database: cartman
+telegraf_influxdb_username: root
+telegraf_influxdb_password: root
+telegraf_plugins_base:
+  - name: mem
+  - name: system
+  - name: cpu
+    options:
+      percpu: "true"
+      totalcpu: "true"
+      collect_cpu_time: "false"
+      report_active: "false"
+  - name: disk
+    options:
+      ignore_fs:
+        - "tmpfs"
+        - "devtmpfs"
+        - "devfs"
+      mountpoints:
+        - "/mnt/storage"
+        - "/opt"
+  - name: diskio
+    options:
+      skip_serial_number: "true"
+  - name: kernel
+  - name: processes
+  - name: docker
+    options:
+      endpoint: "unix:///var/run/docker.sock"
+      per_device: "true"
+  - name: hddtemp
+  - name: net
+    options:
+      interfaces:
+        - "ens192"
+  - name: sensors
+
+## ktz-disks
+extra_mountpoints:
+  - { path: /opt, diskbyid: /dev/disk/by-id/nvme-SAMSUNG-serial-part1, fs: ext4, opts: "defaults,discard"}
+
+parity_disks:
+  - { path: /mnt/parity1, diskbyid: /dev/disk/by-id/ata-WDC_WD100EMAZ-serial-part1, fs: xfs, opts: defaults }
+  - { path: /mnt/parity2, diskbyid: /dev/disk/by-id/ata-WDC_WD100EMAZ-serial-part2, fs: xfs, opts: defaults }
+
+data_disks:
+  - { path: /mnt/disk1, diskbyid: /dev/disk/by-id/ata-WDC_WD100EMAZ-serial-part1, fs: xfs, opts: defaults, content: true }
+  - { path: /mnt/disk2, diskbyid: /dev/disk/by-id/ata-WDC_WD100EMAZ-serial-part2, fs: xfs, opts: defaults, content: true }

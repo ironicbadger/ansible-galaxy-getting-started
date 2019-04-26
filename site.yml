@@ -1,0 +1,24 @@
+---
+  - hosts: example
+    roles:
+      - role: geerlingguy.docker
+        tags: docker
+      - role: ironicbadger.ansible_role_packages
+        tags: packages
+      - role: ironicbadger.ansible_role_hddtemp
+      - role: rossmcdonald.telegraf
+      #- role: ktz-disks #an example of a good use case for a local role vs galaxy role
+
+  # not used here but included as another example
+  # - hosts: cartman
+  #   roles:
+  #     - role: ktz-common
+  #     - role: geerlingguy.docker
+  #     - role: ktz-cartman
+  #     - role: ironicbadger.ansible_role_docker_compose_generator
+  #       tags: compose
+  #     - role: ironicbadger.ansible_role_nginx_configs
+  #       tags: compose
+  #     - role: ironicbadger.ansible_role_snapraid
+  #     - role: ironicbadger.ansible_role_hddtemp
+  #     - role: rossmcdonald.telegraf

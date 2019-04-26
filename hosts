@@ -1,0 +1,5 @@
+[example]
+example.host.org ansible_become_pass=123456
+
+[home]
+cartman.ktz.lan ansible_ssh_port=22222

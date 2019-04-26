@@ -1,0 +1,5 @@
+---
+
+- name: configure disks
+  include: configure-disks.yml
+  when: configure_disks

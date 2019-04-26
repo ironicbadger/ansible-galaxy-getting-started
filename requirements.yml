@@ -1,0 +1,5 @@
+- src: ironicbadger.ansible_role_packages
+- src: ironicbadger.ansible_role_hddtemp
+- src: geerlingguy.docker
+- src: geerlingguy.security
+- src: rossmcdonald.telegraf
